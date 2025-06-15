@@ -1,6 +1,8 @@
 # My Notes 
 A sleek and intuitive note-taking web-app that helps you organize your thoughts with ease. Built with vanilla JavaScript, this application offers a clean interface and powerful features while maintaining simplicity.
+![image](https://github.com/user-attachments/assets/a905a51a-0a2b-4c80-a8e7-fa6228288ce3)
 
+🔗 **Live Demo:** [My-Notes](https://sonamkumari29.github.io/My-Notes)
 ## Features
 
 - 📝 **Quick Note Creation**: Add new notes instantly with a single click
