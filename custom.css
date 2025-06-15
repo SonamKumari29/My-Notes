@@ -2,58 +2,311 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-#main{    
+
+:root {
+    --primary-color: #7c3aed;
+    --secondary-color: #4f46e5;
+    --dark-color: #1e293b;
+    --light-color: #ffffff;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-700: #374151;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    min-height: 100vh;
+    color: var(--gray-700);
+    line-height: 1.5;
+}
+
+#main {    
     width: 100%;
     min-height: 100vh;
-    background-color: #a29bfe;
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom:50px;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 100px 24px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
-#addBtn{
+
+#addBtn {
     position: fixed;
-    right: 10px;
-    top: 10px;
-    background-color: #2d3436;
-    color: white;
-    padding: 10px;
-    border:0;
-    outline:0;
-    border-radius:5px;
-    
-}
-.note{           
-
-    width: 400px;
-    height: 400px;
-    background-color: white;
-    margin: 15px;
-    margin-top: 55px;
-}
-.tool{
-    width: 100%;
-    background-color: #2d3436;
-    color: white;
-    padding : 5px;
+    right: 24px;
+    top: 24px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
     display: flex;
-    justify-content: end;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    z-index: 1000;
+}
 
+#addBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background-color: #2d3748;
 }
+
+.note {           
+    background-color: var(--light-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 280px;
+    width: 280px;
+    margin: 0 auto;
+}
+
+.note:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.note-title {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid var(--gray-200);
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+    transition: var(--transition);
+    height: 50px;
+}
+
+.note-title:focus {
+    outline: none;
+    border-bottom-color: var(--primary-color);
+    background-color: var(--light-color);
+}
+
+.tool {
+    width: 100%;
+    background-color: var(--gray-100);
+    padding: 8px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-bottom: 1px solid var(--gray-200);
+    height: 45px;
+}
+
 .tool i {
-    padding: 5px;
-    cursor: pointer; 
+    padding: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 8px;
+    color: var(--gray-700);
 }
-.note textarea{
+
+.tool i:hover {
+    background-color: var(--gray-200);
+    color: var(--primary-color);
+}
+
+.note textarea {
     border: none;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 95px);
     resize: none;
-    padding: 10px;
+    padding: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    background-color: var(--light-color);
+    color: var(--gray-700);
+    transition: var(--transition);
 }
-.note textarea:focus{
-    border:0;
-    outline:0;
+
+.note textarea:focus {
+    outline: none;
+}
+
+.note textarea::placeholder {
+    color: var(--gray-300);
+}
+
+.note-meta {
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--gray-700);
+    border-top: 1px solid var(--gray-200);
+    background-color: var(--gray-100);
+    height: 35px;
+}
+
+.search-container {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    right: 120px;
+    display: flex;
+    gap: 12px;
+    z-index: 1000;
+    max-width: 600px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    font-size: 16px;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--light-color);
+    transition: var(--transition);
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+#searchInput::placeholder {
+    color: var(--gray-300);
+}
+
+#darkModeToggle {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+#darkModeToggle:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background-color: #2d3748;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+}
+
+body.dark-mode .note {
+    background-color: #1e293b;
+    color: var(--gray-100);
+}
+
+body.dark-mode .note-title,
+body.dark-mode textarea {
+    background-color: #1e293b;
+    color: var(--gray-100);
+}
+
+body.dark-mode .note-title {
+    border-bottom-color: #334155;
+}
+
+body.dark-mode .tool {
+    background-color: #0f172a;
+    border-bottom-color: #334155;
+}
+
+body.dark-mode .tool i {
+    color: var(--gray-300);
+}
+
+body.dark-mode .tool i:hover {
+    background-color: #334155;
+    color: var(--primary-color);
+}
+
+body.dark-mode .note-meta {
+    color: var(--gray-300);
+    border-top-color: #334155;
+    background-color: #0f172a;
+}
+
+body.dark-mode #searchInput {
+    background-color: #1e293b;
+    color: var(--gray-100);
+    border-color: #334155;
+}
+
+body.dark-mode #searchInput::placeholder {
+    color: var(--gray-700);
+}
+
+@media (max-width: 768px) {
+    #main {
+        grid-template-columns: 1fr;
+        padding: 90px 16px 30px;
+        gap: 16px;
+    }
+    
+    .search-container {
+        top: 16px;
+        left: 16px;
+        right: 80px;
+    }
+    
+    #searchInput {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    #darkModeToggle {
+        padding: 10px;
+    }
+    
+    #addBtn {
+        right: 16px;
+        top: 16px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .note {
+        height: 260px;
+        width: 260px;
+    }
+    
+    .note-title {
+        height: 45px;
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    .tool {
+        height: 40px;
+        padding: 6px;
+    }
+    
+    .note textarea {
+        height: calc(100% - 85px);
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .note-meta {
+        height: 30px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
 }
