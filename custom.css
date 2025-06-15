@@ -112,7 +112,6 @@ body {
     gap: 0.5rem;
 }
 
-/* Toolbar Layout */
 .tool {
     background-color: var(--tool-bg);
     padding: 0.5rem;
@@ -531,7 +530,6 @@ body.dark-mode #searchInput::placeholder {
     color: var(--gray-700);
 }
 
-/* Custom Delete Confirmation Popup */
 .delete-confirm-overlay {
     position: fixed;
     top: 0;
@@ -615,7 +613,6 @@ body.dark-mode #searchInput::placeholder {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark mode styles */
 .dark-mode .delete-confirm-popup {
     background: var(--dark-bg);
     border-color: var(--dark-border);
@@ -630,7 +627,6 @@ body.dark-mode #searchInput::placeholder {
     background: #dc2626;
 }
 
-/* Note Color Styles */
 .note[data-color="#ffffff"] {
     background: #ffffff;
     border: 1px solid #e5e7eb;
@@ -651,7 +647,6 @@ body.dark-mode #searchInput::placeholder {
     border: 1px solid #f472b6;
 }
 
-/* Dark Mode Colors */
 .dark-mode {
     --primary-color: #60a5fa;
     --bg-color: #1f2937;
@@ -680,7 +675,6 @@ body.dark-mode #searchInput::placeholder {
     border-color: #db2777;
 }
 
-/* Color Palette in Dark Mode */
 .dark-mode .color-palette {
     background: #1f2937;
     border-color: #374151;
@@ -712,7 +706,6 @@ body.dark-mode #searchInput::placeholder {
     border: 1px solid #db2777;
 }
 
-/* Current Color Circle */
 .current-color {
     width: 32px;
     height: 32px;
@@ -740,7 +733,6 @@ body.dark-mode #searchInput::placeholder {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Color Options Hover */
 .color-option:hover {
     transform: scale(1.1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);

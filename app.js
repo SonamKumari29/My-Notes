@@ -1,7 +1,6 @@
 const addBtn = document.querySelector("#addBtn")
 const main = document.querySelector("#main")
 
-// Add search and filter functionality
 const searchContainer = document.createElement("div")
 searchContainer.className = "search-container"
 searchContainer.innerHTML = `
@@ -23,23 +22,19 @@ const searchInput = document.querySelector("#searchInput")
 const categoryFilter = document.querySelector("#categoryFilter")
 const darkModeToggle = document.querySelector("#darkModeToggle")
 
-// Dark mode functionality
 darkModeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode")
     const icon = darkModeToggle.querySelector("i")
     icon.classList.toggle("fa-moon")
     icon.classList.toggle("fa-sun")
-    // Save dark mode preference
     localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"))
 })
 
-// Load dark mode preference
 if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode")
     darkModeToggle.querySelector("i").classList.replace("fa-moon", "fa-sun")
 }
 
-// Search and filter functionality
 function filterNotes() {
     const searchTerm = searchInput.value.toLowerCase()
     const selectedCategory = categoryFilter.value
@@ -98,7 +93,6 @@ const showSaveFeedback = (saveIcon) => {
     }, 500)
 }
 
-// Add delete confirmation popup to body
 const deleteConfirmPopup = document.createElement("div");
 deleteConfirmPopup.className = "delete-confirm-overlay";
 deleteConfirmPopup.innerHTML = `
@@ -113,7 +107,6 @@ deleteConfirmPopup.innerHTML = `
 `;
 document.body.appendChild(deleteConfirmPopup);
 
-// Function to show delete confirmation
 const showDeleteConfirmation = (note) => {
     deleteConfirmPopup.classList.add("active");
     
@@ -180,30 +173,27 @@ const addNote = (text = "", title = "", timestamp = null, category = "", color =
         </div>
     `;
 
-    // Set initial category and color
     note.dataset.category = category || 'personal';
     note.dataset.color = color || '#ffffff';
     
-    // Color selection functionality
+
     const colorSelector = note.querySelector('.color-selector');
     const currentColor = note.querySelector('.current-color');
     const colorPalette = note.querySelector('.color-palette');
     const colorOptions = note.querySelectorAll('.color-option');
 
-    // Toggle color palette
+
     currentColor.addEventListener('click', (e) => {
         e.stopPropagation();
         colorPalette.classList.toggle('active');
     });
 
-    // Close palette when clicking outside
     document.addEventListener('click', (e) => {
         if (!colorSelector.contains(e.target)) {
             colorPalette.classList.remove('active');
         }
     });
 
-    // Color selection
     colorOptions.forEach(option => {
         option.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -215,12 +205,10 @@ const addNote = (text = "", title = "", timestamp = null, category = "", color =
         });
     });
 
-    // Delete functionality
     note.querySelector(".trash").addEventListener("click", () => {
         showDeleteConfirmation(note);
     });
 
-    // Save functionality
     note.querySelector(".save").addEventListener("click", () => {
         if (saveNotes()) {
             const meta = note.querySelector(".note-meta");
@@ -230,7 +218,6 @@ const addNote = (text = "", title = "", timestamp = null, category = "", color =
         }
     });
 
-    // Auto-save on input with debounce
     let saveTimeout;
     const autoSave = () => {
         clearTimeout(saveTimeout);
@@ -246,7 +233,6 @@ const addNote = (text = "", title = "", timestamp = null, category = "", color =
     note.querySelector("textarea").addEventListener("input", autoSave);
     note.querySelector(".note-title").addEventListener("input", autoSave);
 
-    // Category change handler
     note.querySelector(".category-select").addEventListener("change", (e) => {
         note.dataset.category = e.target.value;
         saveNotes();
